@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static java.util.Objects.requireNonNull;
+import static pl.sda.ArgumentValidator.validate;
 
 public class Customer {
 
@@ -16,18 +17,9 @@ public class Customer {
         this.firstName = requireNonNull(firstName);
         this.lastName = requireNonNull(lastName);
         this.email = requireNonNull(email);
-        if (!this.firstName.matches("\\p{L}{2,}")) {
-            throw new IllegalArgumentException("first name is invalid");
-        }
-        if (!this.lastName.matches("\\p{L}{2,}")) {
-            throw new IllegalArgumentException("last name is invalid");
-        }
-        if (!this.email.matches("[a-zA-Z0-9\\.\\-_]{1,}@[a-zA-Z0-9\\.\\-_]{1,}\\.[a-z]{1,}")) {
-            // a@a.p
-            // aa.a@abc.qw
-            // 12.jk@a33.pl
-            throw new IllegalArgumentException("email is invalid");
-        }
+        validate(this.firstName.matches("\\p{L}{2,}"), "first name is invalid");
+        validate(this.lastName.matches("\\p{L}{2,}"), "last name is invalid");
+        validate(this.email.matches("[a-zA-Z0-9\\.\\-_]{1,}@[a-zA-Z0-9\\.\\-_]{1,}\\.[a-z]{1,}"), "email is invalid");
     }
 
     public String getFirstName() {
