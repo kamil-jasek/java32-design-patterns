@@ -2,7 +2,7 @@ package pl.sda;
 
 import static pl.sda.ArgumentValidator.validate;
 
-public class Email extends Value {
+public final class Email extends Value {
 
     public Email(String value) {
         super(value);

@@ -2,14 +2,14 @@ package pl.sda;
 
 import static pl.sda.ArgumentValidator.validate;
 
-public final class Name extends Value {
+public final class ZipCode extends Value {
 
-    public Name(String value) {
+    public ZipCode(String value) {
         super(value);
     }
 
     @Override
     protected void verify() {
-        validate(this.value.matches("\\p{L}{2,}"), "invalid name");
+        validate(value.matches("\\d{2}-\\d{3}"), "invalid zip code");
     }
 }

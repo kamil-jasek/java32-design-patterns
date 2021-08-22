@@ -7,7 +7,5 @@ public class CustomerTest {
         var lastName = new Name("Kowalski");
         var email = new Email("k.j@wp.pl");
         var customer = new Customer(firstName, lastName, email);
-
-
     }
 }

@@ -6,7 +6,7 @@ import static java.util.Objects.requireNonNull;
 
 public abstract class Value {
 
-    protected String value;
+    protected final String value;
 
     public Value(String value) {
         this.value = requireNonNull(value);
