@@ -2,6 +2,7 @@ package pl.sda;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static java.util.Objects.requireNonNull;
 
@@ -32,7 +33,7 @@ public class Customer {
     }
 
     public List<Address> getAddresses() {
-        return addresses;
+        return new ArrayList<>(addresses);
     }
 
     public void addAddress(Address address) {
@@ -43,5 +44,18 @@ public class Customer {
 
     public boolean removeAddress(Address address) {
         return addresses.remove(address);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return firstName.equals(customer.firstName) && lastName.equals(customer.lastName) && email.equals(customer.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, email);
     }
 }
