@@ -12,6 +12,7 @@ public class Customer {
     private final Name lastName;
     private final Email email;
     private final List<Address> addresses;
+    private PremiumStatus premiumStatus;
 
     public Customer(Name firstName, Name lastName, Email email) {
         this.firstName = requireNonNull(firstName);
@@ -44,6 +45,14 @@ public class Customer {
 
     public boolean removeAddress(Address address) {
         return addresses.remove(address);
+    }
+
+    public void markPremium(PremiumStatus status) {
+        this.premiumStatus = requireNonNull(status);
+    }
+
+    public PremiumStatus getPremiumStatus() {
+        return premiumStatus;
     }
 
     @Override
