@@ -1,36 +1,31 @@
 package pl.sda;
 
 import java.util.List;
-import java.util.Objects;
 
 import static java.util.Objects.requireNonNull;
-import static pl.sda.ArgumentValidator.validate;
 
 public class Customer {
 
-    private String firstName;
-    private String lastName;
-    private String email;
+    private Name firstName;
+    private Name lastName;
+    private Email email;
     private List<Address> addresses;
 
-    public Customer(String firstName, String lastName, String email) {
+    public Customer(Name firstName, Name lastName, Email email) {
         this.firstName = requireNonNull(firstName);
         this.lastName = requireNonNull(lastName);
         this.email = requireNonNull(email);
-        validate(this.firstName.matches("\\p{L}{2,}"), "first name is invalid");
-        validate(this.lastName.matches("\\p{L}{2,}"), "last name is invalid");
-        validate(this.email.matches("[a-zA-Z0-9\\.\\-_]{1,}@[a-zA-Z0-9\\.\\-_]{1,}\\.[a-z]{1,}"), "email is invalid");
     }
 
-    public String getFirstName() {
+    public Name getFirstName() {
         return firstName;
     }
 
-    public String getLastName() {
+    public Name getLastName() {
         return lastName;
     }
 
-    public String getEmail() {
+    public Email getEmail() {
         return email;
     }
 
