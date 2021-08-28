@@ -1,4 +1,4 @@
-package pl.sda;
+package pl.sda.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,27 +6,15 @@ import java.util.Objects;
 
 import static java.util.Objects.requireNonNull;
 
-public class Customer {
+public abstract class Customer {
 
-    private final Name firstName;
-    private final Name lastName;
     private final Email email;
     private final List<Address> addresses;
     private PremiumStatus premiumStatus;
 
-    public Customer(Name firstName, Name lastName, Email email) {
-        this.firstName = requireNonNull(firstName);
-        this.lastName = requireNonNull(lastName);
+    public Customer(Email email) {
         this.email = requireNonNull(email);
         this.addresses = new ArrayList<>();
-    }
-
-    public Name getFirstName() {
-        return firstName;
-    }
-
-    public Name getLastName() {
-        return lastName;
     }
 
     public Email getEmail() {
@@ -60,11 +48,11 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return firstName.equals(customer.firstName) && lastName.equals(customer.lastName) && email.equals(customer.email);
+        return email.equals(customer.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, email);
+        return Objects.hash(email);
     }
 }

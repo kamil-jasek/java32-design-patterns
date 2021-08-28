@@ -1,6 +1,6 @@
-package pl.sda;
+package pl.sda.service;
 
-import pl.sda.mail.MailService;
+import pl.sda.domain.Customer;
 
 public class CustomerRegistration {
 

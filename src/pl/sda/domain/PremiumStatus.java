@@ -1,4 +1,4 @@
-package pl.sda;
+package pl.sda.domain;
 
 import java.time.Instant;
 import java.util.Objects;

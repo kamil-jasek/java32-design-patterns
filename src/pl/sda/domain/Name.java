@@ -1,6 +1,6 @@
-package pl.sda;
+package pl.sda.domain;
 
-import static pl.sda.ArgumentValidator.validate;
+import static pl.sda.util.ArgumentValidator.validate;
 
 public final class Name extends Value {
 

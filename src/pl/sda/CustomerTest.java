@@ -1,12 +1,17 @@
 package pl.sda;
 
+import pl.sda.domain.*;
+
+import java.time.Instant;
+import java.util.HashSet;
+
 public class CustomerTest {
 
     public static void main(String[] args) {
         var firstName = new Name("Jan");
         var lastName = new Name("Kowalski");
         var email = new Email("k.j@wp.pl");
-        var customer = new Customer(firstName, lastName, email);
+        var customer = new Person(email, firstName, lastName);
 
         var address = new Address("str", "Wawa", new ZipCode("02-300"), "PL");
 
@@ -22,9 +27,15 @@ public class CustomerTest {
 
         assert !customer.getAddresses().contains(address2) : "address list mutated";
 
-        var customer2 = new Customer(firstName, lastName, email);
+        var customer2 = new Person(email, firstName, lastName);
         assert customer2.equals(customer) : "invalid equals";
 
+        final var set = new HashSet<Customer>();
+        set.add(customer); // customer.hashcode()
+        set.add(customer2);
 
+        customer.markPremium(new PremiumStatus(true, Instant.now()));
+
+        assert set.contains(customer); // customer.hashcode()
     }
 }

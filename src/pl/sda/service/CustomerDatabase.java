@@ -1,4 +1,6 @@
-package pl.sda;
+package pl.sda.service;
+
+import pl.sda.domain.Customer;
 
 public class CustomerDatabase {
 

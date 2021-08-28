@@ -1,4 +1,4 @@
-package pl.sda;
+package pl.sda.util;
 
 public class ArgumentValidator {
 

@@ -1,4 +1,4 @@
-package pl.sda;
+package pl.sda.util;
 
 import java.io.IOException;
 import java.util.Objects;
