@@ -14,8 +14,11 @@ public class CustomerRegistrationTest {
         final var database = new CustomerDatabase();
         final var registration = new PersonRegistration(database,
                 new MailService());
-        final var form = CustomerRegistrationForm.createForPerson(
-                "jan@wp.pl", "Jan", "Kowalski");
+        final var form = CustomerRegistrationForm.builder()
+                .email("jan@wp.pl")
+                .firstName("Jan")
+                .lastName("Kowalski")
+                .build();
         registration.registerCustomer(form);
 
         final var savedCustomer = database.getByEmail(new Email("jan@wp.pl"));
