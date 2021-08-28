@@ -2,15 +2,17 @@ package pl.sda.service;
 
 import pl.sda.domain.Customer;
 import pl.sda.domain.Email;
+import pl.sda.event.CustomerRegisteredEvent;
+import pl.sda.event.EventPublisher;
 
 public abstract class CustomerRegistration {
 
     private final CustomerDatabase database;
-    private final MailService mailService;
+    private final EventPublisher eventPublisher;
 
-    public CustomerRegistration(CustomerDatabase database, MailService mailService) {
+    public CustomerRegistration(CustomerDatabase database, EventPublisher eventPublisher) {
         this.database = database;
-        this.mailService = mailService;
+        this.eventPublisher = eventPublisher;
     }
 
     public void registerCustomer(CustomerRegistrationForm form) {
@@ -19,7 +21,7 @@ public abstract class CustomerRegistration {
         }
         final var customer = createCustomer(form);
         database.save(customer);
-        mailService.sendMail();
+        eventPublisher.publishEvent(new CustomerRegisteredEvent(form.getEmail()));
     }
 
     abstract Customer createCustomer(CustomerRegistrationForm form);

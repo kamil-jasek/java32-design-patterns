@@ -1,11 +1,12 @@
 package pl.sda.service;
 
 import pl.sda.domain.*;
+import pl.sda.event.EventPublisher;
 
 public class CompanyRegistration extends CustomerRegistration {
 
-    public CompanyRegistration(CustomerDatabase database, MailService mailService) {
-        super(database, mailService);
+    public CompanyRegistration(CustomerDatabase database, EventPublisher eventPublisher) {
+        super(database, eventPublisher);
     }
 
     @Override

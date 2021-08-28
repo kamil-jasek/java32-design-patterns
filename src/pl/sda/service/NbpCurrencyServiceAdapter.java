@@ -18,6 +18,7 @@ public class NbpCurrencyServiceAdapter implements CurrencyService {
     public double exchange(String currencyCode, LocalDate date) {
         try {
             final HttpResponse<String> response = requestCurrencyRate(currencyCode, date);
+            System.out.println(response.body());
             final double bid = extractBid(response);
             final double ask = extractAsk(response);
             return BigDecimal.valueOf((bid + ask) / 2)

@@ -4,11 +4,12 @@ import pl.sda.domain.Customer;
 import pl.sda.domain.Email;
 import pl.sda.domain.Name;
 import pl.sda.domain.Person;
+import pl.sda.event.EventPublisher;
 
 public class PersonRegistration extends CustomerRegistration {
 
-    public PersonRegistration(CustomerDatabase database, MailService mailService) {
-        super(database, mailService);
+    public PersonRegistration(CustomerDatabase database, EventPublisher eventPublisher) {
+        super(database, eventPublisher);
     }
 
     @Override

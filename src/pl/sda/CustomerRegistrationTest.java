@@ -3,6 +3,8 @@ package pl.sda;
 import pl.sda.domain.Email;
 import pl.sda.domain.Name;
 import pl.sda.domain.Person;
+import pl.sda.event.EventPublisher;
+import pl.sda.event.SendMailCustomerRegisteredEventListener;
 import pl.sda.service.CustomerDatabase;
 import pl.sda.service.CustomerRegistrationForm;
 import pl.sda.service.MailService;
@@ -12,8 +14,9 @@ public class CustomerRegistrationTest {
 
     public static void main(String[] args) {
         final var database = new CustomerDatabase();
-        final var registration = new PersonRegistration(database,
-                new MailService());
+        final var eventPublisher = new EventPublisher();
+        eventPublisher.addListener(new SendMailCustomerRegisteredEventListener());
+        final var registration = new PersonRegistration(database, eventPublisher);
         final var form = CustomerRegistrationForm.builder()
                 .email("jan@wp.pl")
                 .firstName("Jan")
