@@ -24,5 +24,7 @@ public class CustomerTest {
 
         var customer2 = new Customer(firstName, lastName, email);
         assert customer2.equals(customer) : "invalid equals";
+
+
     }
 }
